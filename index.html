@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn thi Ngữ âm – Âm vị học</title>
+<meta name="description" content="Roadmap ôn thi và tổng hợp kiến thức English Phonetics & Phonology, song ngữ Anh – Việt, có mindmap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#efede6; --text:#1d1c1a; --muted:#5f5c55;
+  --line:#dedad0; --accent:#2f5d50; --accent-soft:#dbe8e3; --en:#2b4c7e; --vi:#8a3b2e;
+  --hi:#b0412e; --mid:#b7791f; --ok:#2f7d4f; --radius:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151614; --surface:#1d1f1c; --surface-2:#262924; --text:#ecebe6; --muted:#a8a69e;
+    --line:#33362f; --accent:#8cc7b2; --accent-soft:#24362f; --en:#9dbbe8; --vi:#e8a597;
+    --hi:#ef8a73; --mid:#e3b45c; --ok:#7fcf9c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151614; --surface:#1d1f1c; --surface-2:#262924; --text:#ecebe6; --muted:#a8a69e;
+  --line:#33362f; --accent:#8cc7b2; --accent-soft:#24362f; --en:#9dbbe8; --vi:#e8a597;
+  --hi:#ef8a73; --mid:#e3b45c; --ok:#7fcf9c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 "Be Vietnam Pro","Noto Sans",system-ui,sans-serif}
+.ipa{font-family:"Noto Sans","Charis SIL","Doulos SIL",serif}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;min-height:56px;flex-wrap:wrap}
+.brand{font-weight:700;margin-right:auto}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap}
+nav.tabs a{padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:15px}
+nav.tabs a[aria-current="page"]{background:var(--accent-soft);color:var(--accent)}
+nav.tabs a:hover{color:var(--text)}
+nav.tabs a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hero{padding:40px 0 12px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 8px}
+.hero p{color:var(--muted);margin:0;max-width:62ch}
+.count{display:inline-flex;gap:10px;align-items:baseline;margin-top:20px;padding:10px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.count b{font-size:28px;color:var(--hi)}
+section.page{display:none;padding:12px 0 64px}
+section.page.active{display:block}
+h2{font-size:26px;margin:40px 0 8px}
+h3{font-size:19px;margin:28px 0 10px}
+.lead{color:var(--muted);margin:0 0 16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px;overflow-x:auto;margin:12px 0}
+.diagram pre.mermaid{margin:0;display:flex;justify-content:center;min-width:fit-content}
+.diagram figcaption{font-size:14px;color:var(--muted);margin-top:6px;text-align:center}
+/* bilingual rows */
+.bi{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.bi > .h{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;background:var(--surface-2)}
+.bi > .h.en{color:var(--en)} .bi > .h.vi{color:var(--vi)}
+.bi > div:not(.h){padding:10px 14px;border-top:1px solid var(--line)}
+.bi > .en:not(.h){border-right:1px solid var(--line)}
+.bi ul{margin:0;padding-left:18px}
+.bi p{margin:0}
+@media (max-width:720px){
+  .bi{grid-template-columns:1fr}
+  .bi > .h.vi{display:none}
+  .bi > .h.en::after{content:" · Tiếng Việt";color:var(--vi)}
+  .bi > .en:not(.h){border-right:0}
+  .bi > .vi:not(.h){border-top:1px dashed var(--line);background:color-mix(in srgb,var(--surface-2) 45%,var(--surface))}
+}
+.unit{margin-top:48px}
+.unit-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;border-bottom:2px solid var(--accent);padding-bottom:6px}
+.unit-head .no{font-weight:700;color:var(--accent);font-size:15px}
+.unit-head h2{margin:0;font-size:24px}
+.unit-head .vi-t{color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);margin:12px 0}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--surface-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.cons td,.cons th{text-align:center;white-space:nowrap}
+.cons th:first-child,.cons td:first-child{text-align:left}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid currentColor}
+.tag.hi{color:var(--hi)} .tag.mid{color:var(--mid)} .tag.ok{color:var(--ok)}
+/* roadmap */
+.prio{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.prio .card h4{margin:6px 0 4px;font-size:16px}
+.prio .card p{margin:0;color:var(--muted);font-size:15px}
+.days{display:grid;gap:10px;margin-top:12px}
+.day{display:grid;grid-template-columns:92px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+.day.exam{border-color:var(--hi);background:color-mix(in srgb,var(--hi) 8%,var(--surface))}
+.day.today{box-shadow:0 0 0 2px var(--accent) inset}
+.day .d{font-weight:700;font-size:20px;line-height:1.1}
+.day .d small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.day h4{margin:0 0 6px;font-size:16px}
+.day ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.day li label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.day input{margin-top:5px;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.day li input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{height:8px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin:8px 0 4px}
+.progress i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.mono{font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:20px 0 40px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.toc a{font-size:14px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--text);background:var(--surface)}
+.toc a:hover{border-color:var(--accent)}
+.themebtn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:5px 10px;cursor:pointer;font:inherit;font-size:14px}
+@media (max-width:560px){ .day{grid-template-columns:1fr;gap:6px} .hero{padding-top:24px} }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <span class="brand">Ngữ âm – Âm vị học</span>
+    <nav class="tabs" aria-label="Trang">
+      <a href="#roadmap" data-tab="roadmap">Roadmap</a>
+      <a href="#kien-thuc" data-tab="kien-thuc">Kiến thức</a>
+      <a href="#hay-sai" data-tab="hay-sai">Câu hay sai</a>
+    </nav>
+    <button class="themebtn" id="themeBtn" type="button" aria-label="Đổi giao diện sáng/tối">◐</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>English Phonetics &amp; Phonology</h1>
+    <p>Roadmap ôn thi và tổng hợp kiến thức 12 unit, song ngữ Anh – Việt. Thi kết thúc môn trực tiếp, chiếm 60% điểm.</p>
+    <div class="count" role="status"><span>Còn</span><b class="mono" id="daysLeft">–</b><span>ngày đến buổi thi <strong>09/11/2026</strong></span></div>
+  </div>
+
+  <!-- ================= ROADMAP ================= -->
+  <section class="page" id="roadmap">
+    <h2>Ưu tiên ôn</h2>
+    <p class="lead">Xếp theo câu sai thật trong bài kiểm tra cuối học phần online (87/100) và 2 bài test.</p>
+    <div class="prio">
+      <div class="card"><span class="tag hi">Cao</span><h4>U11 · Connected speech</h4><p>Assimilation, elision, dissimilation. Sai 3 câu, script rất ngắn.</p></div>
+      <div class="card"><span class="tag hi">Cao</span><h4>U3–U5 · Allophones</h4><p>Devoiced cuối từ, /h/ giữa từ, clear/dark/syllabic /l/, syllabic /n/. Sai 5 câu.</p></div>
+      <div class="card"><span class="tag mid">Vừa</span><h4>U8 · U10 · U12</h4><p>Trọng âm từ, weak forms, ngữ điệu: mỗi phần sai 1 câu.</p></div>
+      <div class="card"><span class="tag ok">Giữ</span><h4>U1 · U2 · U6 · U7 · U9</h4><p>Test U6–U9 30/30, U1–U5 19/20. Chỉ cần lướt lại.</p></div>
+    </div>
+
+    <h2>Lịch 02/11 → 09/11</h2>
+    <p class="lead">Mỗi ngày khoảng 2 tiếng. Tick ô khi xong; trạng thái chỉ lưu trên trình duyệt của bạn.</p>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <p class="lead mono" id="progText"></p>
+    <div class="days" id="days">
+      <div class="day" data-date="2026-11-02"><div class="d">02/11<small>Thứ Hai · tối</small></div><div><h4>U0 · U1 · U2 — Nền tảng</h4><ul>
+        <li><label><input type="checkbox" data-k="d1a"><span>Thuộc 44 âm vị: 12 nguyên âm đơn, 8 nguyên âm đôi, 24 phụ âm</span></label></li>
+        <li><label><input type="checkbox" data-k="d1b"><span>Vẽ lại facial diagram và 4 vị trí glottis</span></label></li>
+        <li><label><input type="checkbox" data-k="d1c"><span>Làm bài tự đánh giá Unit 2 trên LMS</span></label></li></ul></div></div>
+      <div class="day" data-date="2026-11-03"><div class="d">03/11<small>Thứ Ba</small></div><div><h4>U3 · U4 — Plosives, fricatives, affricates</h4><ul>
+        <li><label><input type="checkbox" data-k="d2a"><span>Bảng allophone của /p t k/, /b d g/, fricatives, /h/</span></label></li>
+        <li><label><input type="checkbox" data-k="d2b"><span>Homorganic = cùng organ / place of articulation</span></label></li>
+        <li><label><input type="checkbox" data-k="d2c"><span>Làm bài tự đánh giá Unit 3, Unit 4</span></label></li></ul></div></div>
+      <div class="day" data-date="2026-11-04"><div class="d">04/11<small>Thứ Tư</small></div><div><h4>U5 — Nasals, /l/, approximants</h4><ul>
+        <li><label><input type="checkbox" data-k="d3a"><span>Clear / dark / devoiced / syllabic /l/</span></label></li>
+        <li><label><input type="checkbox" data-k="d3b"><span>Linking r, intrusive r / w / j; /ŋ/ và "-ng"</span></label></li>
+        <li><label><input type="checkbox" data-k="d3c"><span>Làm bài tự đánh giá Unit 5, làm lại U1–U5 Test</span></label></li></ul></div></div>
+      <div class="day" data-date="2026-11-05"><div class="d">05/11<small>Thứ Năm</small></div><div><h4>U6 · U7 — Phonology, syllable</h4><ul>
+        <li><label><input type="checkbox" data-k="d4a"><span>Phoneme vs allophone, minimal pair, complementary distribution</span></label></li>
+        <li><label><input type="checkbox" data-k="d4b"><span>Đếm âm vị; chia onset / peak / coda cho 10 từ</span></label></li>
+        <li><label><input type="checkbox" data-k="d4c"><span>Làm bài tự đánh giá Unit 6</span></label></li></ul></div></div>
+      <div class="day" data-date="2026-11-06"><div class="d">06/11<small>Thứ Sáu</small></div><div><h4>U8 · U9 · U10 — Stress, weak forms</h4><ul>
+        <li><label><input type="checkbox" data-k="d5a"><span>Quy tắc trọng âm 2–3 âm tiết, hậu tố, từ ghép</span></label></li>
+        <li><label><input type="checkbox" data-k="d5b"><span>Từ được nhấn trong câu; 6 trường hợp strong form</span></label></li>
+        <li><label><input type="checkbox" data-k="d5c"><span>Làm lại U6–U9 Test</span></label></li></ul></div></div>
+      <div class="day" data-date="2026-11-07"><div class="d">07/11<small>Thứ Bảy</small></div><div><h4>U11 · U12 — Connected speech, intonation</h4><ul>
+        <li><label><input type="checkbox" data-k="d6a"><span>Assimilation: hướng × manner / voice / place, kèm ví dụ</span></label></li>
+        <li><label><input type="checkbox" data-k="d6b"><span>5 tones và các contour 231↓ · 233↑ · 232→</span></label></li>
+        <li><label><input type="checkbox" data-k="d6c"><span>Làm bài tự đánh giá Unit 10+11 và U12</span></label></li></ul></div></div>
+      <div class="day" data-date="2026-11-08"><div class="d">08/11<small>Chủ Nhật</small></div><div><h4>Tổng ôn</h4><ul>
+        <li><label><input type="checkbox" data-k="d7a"><span>Làm lại đề cuối học phần (che đáp án), mục tiêu ≥ 90/100</span></label></li>
+        <li><label><input type="checkbox" data-k="d7b"><span>Ôn kỹ 13 câu ở tab "Câu hay sai"</span></label></li>
+        <li><label><input type="checkbox" data-k="d7c"><span>Đọc lại mindmap và bảng phụ âm; ngủ sớm</span></label></li></ul></div></div>
+      <div class="day exam" data-date="2026-11-09"><div class="d">09/11<small>Thứ Hai</small></div><div><h4>Thi kết thúc môn</h4><p style="margin:0;color:var(--muted)">Mang thẻ sinh viên. Đọc kỹ phần gạch chân trong đề.</p></div></div>
+    </div>
+
+    <h2>Tự kiểm tra trước khi thi</h2>
+    <div class="days"><div class="day"><div class="d">✓<small>Checklist</small></div><div><ul>
+      <li><label><input type="checkbox" data-k="c1"><span>Viết thuộc 44 ký hiệu âm vị kèm ví dụ</span></label></li>
+      <li><label><input type="checkbox" data-k="c2"><span>Mô tả voicing – place – manner cho mọi phụ âm</span></label></li>
+      <li><label><input type="checkbox" data-k="c3"><span>Liệt kê allophone của /p t k/, /b d g/, /l/, /r/, /h/, /n/</span></label></li>
+      <li><label><input type="checkbox" data-k="c4"><span>Đánh trọng âm 20 từ có hậu tố</span></label></li>
+      <li><label><input type="checkbox" data-k="c5"><span>Phân loại assimilation cho 5 ví dụ</span></label></li>
+      <li><label><input type="checkbox" data-k="c6"><span>Ghi contour cho câu kể, Wh-q, Yes/No q, tag, câu lựa chọn</span></label></li>
+    </ul></div></div></div>
+  </section>
+
+  <!-- ================= KNOWLEDGE ================= -->
+  <section class="page" id="kien-thuc">
+    <h2>Bản đồ toàn khóa</h2>
+    <p class="lead">Phần 1 (U1–U5) mô tả từng âm — <em>phonetics</em>. Phần 2 (U6–U12) nghiên cứu cách âm vận hành và các đơn vị lớn hơn — <em>phonology</em>.</p>
+    <figure class="diagram"><pre class="mermaid">
+mindmap
+  root((Phonetics & Phonology))
+    Phonetics – production
+      U1 Speech organs
+        Air stream · vocal folds · resonators
+        Articulators vs points of articulation
+        4 glottis positions
+      U2 Vowels & consonants
+        12 pure vowels · 8 diphthongs · 5 triphthongs
+        Voicing · place · manner
+      U3 Plosives
+        Aspiration · devoicing · shortening
+      U4 Fricatives & affricates
+        Groove vs slit · /h/ · homorganic
+      U5 Nasals · lateral · approximants
+        Clear · dark · syllabic /l/
+        Linking & intrusive r w j
+    Phonology – function
+      U6 Phoneme & allophone
+        Minimal pair · complementary distribution
+        Segmental vs suprasegmental
+      U7 Syllable
+        Onset · peak · coda
+        Strong vs weak syllables
+      U8 Word stress
+        Suffix rules · compounds
+      U9 Sentence stress
+        Content vs function words
+      U10 Weak forms
+        6 cases of strong form
+      U11 Connected speech
+        Assimilation · elision · linking
+      U12 Intonation
+        5 tones · 3 functions · contours
+</pre><figcaption>Mindmap 12 unit · Course mindmap</figcaption></figure>
+
+    <nav class="toc" aria-label="Mục lục unit">
+      <a href="#u0">U0 Ký hiệu</a><a href="#u1">U1</a><a href="#u2">U2</a><a href="#u3">U3</a><a href="#u4">U4</a><a href="#u5">U5</a><a href="#u6">U6</a><a href="#u7">U7</a><a href="#u8">U8</a><a href="#u9">U9</a><a href="#u10">U10</a><a href="#u11">U11</a><a href="#u12">U12</a>
+    </nav>
+
+    <!-- U0 -->
+    <div class="unit" id="u0">
+      <div class="unit-head"><span class="no">U0</span><h2>The 44 phonemes of RP</h2><span class="vi-t">44 âm vị tiếng Anh chuẩn (RP)</span></div>
+      <div class="tbl"><table class="ipa">
+        <thead><tr><th>Group · Nhóm</th><th>Phonemes · Âm vị</th><th>Examples · Ví dụ</th></tr></thead>
+        <tbody>
+          <tr><td>7 short vowels · nguyên âm ngắn</td><td>ɪ e æ ʌ ʊ ɒ ə</td><td>pit, pet, pat, putt, put, pot, about</td></tr>
+          <tr><td>5 long vowels · nguyên âm dài</td><td>iː ɑː ɔː uː ɜː</td><td>key, car, core, coo, cur</td></tr>
+          <tr><td>5 closing diphthongs · đôi khép</td><td>eɪ aɪ ɔɪ əʊ aʊ</td><td>bay, buy, boy, go, cow</td></tr>
+          <tr><td>3 centring diphthongs · đôi trung tâm</td><td>ɪə eə ʊə</td><td>peer, pear, poor</td></tr>
+          <tr><td>24 consonants · phụ âm</td><td>p b t d k ɡ f v θ ð s z ʃ ʒ h tʃ dʒ m n ŋ l r w j</td><td>pea, bee, toe, doe, cap, gap, fat, vat, thing, this, sip, zip, ship, measure, hat, chin, gin, map, nap, hang, led, red, wet, yet</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <!-- U1 -->
+    <div class="unit" id="u1">
+      <div class="unit-head"><span class="no">U1</span><h2>The production of speech sounds</h2><span class="vi-t">Sự tạo âm lời nói</span></div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart LR
+  A["Lungs<br/>Phổi – nguồn năng lượng"] --> B["Trachea<br/>Khí quản"]
+  B --> C["Larynx – vocal folds<br/>Thanh quản – dây thanh"]
+  C --> D["Pharynx<br/>Hầu"]
+  D --> E["Oral cavity<br/>Khoang miệng"]
+  D --> F["Nasal cavity<br/>Khoang mũi"]
+</pre><figcaption>Vocal tract · Đường phát âm</figcaption></figure>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>Three factors: <b>outgoing air stream</b>, <b>vocal bands</b> and <b>resonators</b> (pharynx, oral and nasal cavities).</p></div>
+        <div class="vi"><p>Ba yếu tố: <b>luồng hơi đi ra</b>, <b>dây thanh</b> và <b>khoang cộng hưởng</b> (hầu, khoang miệng, khoang mũi).</p></div>
+        <div class="en"><p><b>Articulators</b> move: tongue (the most movable), lips, lower jaw. <b>Points of articulation</b> hardly move: upper lip, teeth, alveolar ridge, hard palate, velum, pharynx, larynx.</p></div>
+        <div class="vi"><p><b>Articulator</b> là cơ quan di động: lưỡi (linh hoạt nhất), môi, hàm dưới. <b>Point of articulation</b> gần như không di động: môi trên, răng, lợi, ngạc cứng, ngạc mềm, hầu, thanh quản.</p></div>
+        <div class="en"><p>The <b>velum</b> (soft palate) can move; the <b>hard palate</b> is bony and fixed. The <b>glottis</b> is the opening between the vocal folds.</p></div>
+        <div class="vi"><p><b>Velum</b> (ngạc mềm) di động được; <b>ngạc cứng</b> là xương, cố định. <b>Glottis</b> (thanh môn) là khe giữa hai dây thanh.</p></div>
+      </div>
+      <h3>4 glottis positions · 4 vị trí thanh môn</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Position · Vị trí</th><th>English</th><th>Tiếng Việt</th></tr></thead>
+        <tbody>
+          <tr><td>Wide apart · mở rộng</td><td>Normal breathing; voiceless sounds</td><td>Thở bình thường; âm vô thanh</td></tr>
+          <tr><td>Narrow · hẹp</td><td>Whisper-like friction: <span class="ipa">/h/</span></td><td>Tiếng ma sát như thì thầm: <span class="ipa">/h/</span></td></tr>
+          <tr><td>Partially open · khép một phần</td><td>Folds under tension vibrate: voiced sounds</td><td>Dây thanh căng và rung: âm hữu thanh</td></tr>
+          <tr><td>Tightly closed · đóng chặt</td><td>Air blocked: glottal stop</td><td>Chặn hơi hoàn toàn: âm tắc thanh hầu</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <!-- U2 -->
+    <div class="unit" id="u2">
+      <div class="unit-head"><span class="no">U2</span><h2>Consonants and vowels</h2><span class="vi-t">Phụ âm và nguyên âm</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>They differ in <b>manner</b> (vowels: no obstruction; consonants: total or partial obstruction) and <b>distribution</b> (a vowel is the one and only peak of a syllable).</p></div>
+        <div class="vi"><p>Khác nhau ở <b>cách phát âm</b> (nguyên âm: hơi thoát tự do; phụ âm: bị cản hoàn toàn hoặc một phần) và <b>phân bố</b> (nguyên âm là đỉnh duy nhất của âm tiết).</p></div>
+        <div class="en"><p>Vowels are classified by <b>tongue height</b> (close – mid – open), <b>part of tongue</b> (front – central – back), <b>lip shape</b> (spread – neutral – rounded), <b>length/tension</b>. E.g. <span class="ipa">/iː/</span> = close, front, spread, long.</p></div>
+        <div class="vi"><p>Phân loại nguyên âm theo <b>độ cao lưỡi</b>, <b>phần lưỡi</b>, <b>hình môi</b>, <b>độ dài/độ căng</b>. VD <span class="ipa">/iː/</span> = cao, trước, môi dẹt, dài.</p></div>
+        <div class="en"><p>All vowels are <b>oral, voiced and syllabic</b>. A diphthong is <b>one</b> phoneme. Triphthong = closing diphthong + <span class="ipa">ə</span>: player, fire, royal, lower, hour.</p></div>
+        <div class="vi"><p>Mọi nguyên âm đều là âm <b>miệng, hữu thanh, tạo âm tiết</b>. Nguyên âm đôi là <b>một</b> âm vị. Nguyên âm ba = nguyên âm đôi khép + <span class="ipa">ə</span>.</p></div>
+        <div class="en"><p><b>9 voiceless consonants</b>: <span class="ipa">/p t k f θ s ʃ tʃ h/</span>. All the rest are voiced.</p></div>
+        <div class="vi"><p><b>9 phụ âm vô thanh</b>: <span class="ipa">/p t k f θ s ʃ tʃ h/</span>. Còn lại là hữu thanh.</p></div>
+      </div>
+      <h3>Consonant chart · Bảng phụ âm <small style="font-weight:400;color:var(--muted)">(trái vô thanh · phải hữu thanh)</small></h3>
+      <div class="tbl"><table class="cons ipa">
+        <thead><tr><th>Manner \ Place</th><th>Bilabial</th><th>Labio-dental</th><th>Dental</th><th>Alveolar</th><th>Post-alveolar</th><th>Palatal</th><th>Velar</th><th>Glottal</th></tr></thead>
+        <tbody>
+          <tr><th>Plosive (6)</th><td>p b</td><td></td><td></td><td>t d</td><td></td><td></td><td>k ɡ</td><td></td></tr>
+          <tr><th>Fricative (9)</th><td></td><td>f v</td><td>θ ð</td><td>s z</td><td>ʃ ʒ</td><td></td><td></td><td>h</td></tr>
+          <tr><th>Affricate (2)</th><td></td><td></td><td></td><td></td><td>tʃ dʒ</td><td></td><td></td><td></td></tr>
+          <tr><th>Nasal (3)</th><td>m</td><td></td><td></td><td>n</td><td></td><td></td><td>ŋ</td><td></td></tr>
+          <tr><th>Lateral (1)</th><td></td><td></td><td></td><td>l</td><td></td><td></td><td></td><td></td></tr>
+          <tr><th>Approximant (3)</th><td>w</td><td></td><td></td><td></td><td>r</td><td>j</td><td></td><td></td></tr>
+        </tbody></table></div>
+    </div>
+
+    <!-- U3 -->
+    <div class="unit" id="u3">
+      <div class="unit-head"><span class="no">U3</span><h2>Plosives / Stops</h2><span class="vi-t">Âm tắc – bật</span></div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart LR
+  A["Closing<br/>Khép"] --> B["Compression<br/>Nén hơi"] --> C["Release<br/>Mở"] --> D["Post-release<br/>Bật hơi ra"]
+</pre><figcaption>4 phases of a plosive · 4 pha của âm tắc</figcaption></figure>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p><b>Fortis</b> <span class="ipa">/p t k/</span>: voiceless, more force. <b>Lenis</b> <span class="ipa">/b d ɡ/</span>: voiced, weaker.</p></div>
+        <div class="vi"><p><b>Fortis</b> <span class="ipa">/p t k/</span>: vô thanh, phát mạnh. <b>Lenis</b> <span class="ipa">/b d ɡ/</span>: hữu thanh, yếu hơn.</p></div>
+        <div class="en"><ul><li><b>Aspirated</b> word-initially and between vowels when the 2nd syllable is stressed: pot <span class="ipa">[pʰɒt]</span>, appear.</li><li><b>Unaspirated</b> after <span class="ipa">/s/</span>: spot, speak.</li><li><b>Devoice</b> a following <span class="ipa">/l r w j/</span>: play, train.</li><li><b>Shorten</b> the preceding vowel in final position: bit vs bid.</li></ul></div>
+        <div class="vi"><ul><li><b>Bật hơi</b> ở đầu từ và giữa hai nguyên âm khi âm tiết sau được nhấn: pot, appear.</li><li><b>Không bật hơi</b> sau <span class="ipa">/s/</span>: spot, speak.</li><li><b>Làm mất thanh</b> <span class="ipa">/l r w j/</span> theo sau: play, train.</li><li><b>Rút ngắn</b> nguyên âm đứng trước khi ở cuối từ: bit so với bid.</li></ul></div>
+        <div class="en"><p><span class="ipa">/b d ɡ/</span> have little voicing (are <b>devoiced</b>) in initial and final position: bad <span class="ipa">[b̥æd̥]</span>, dog, word.</p></div>
+        <div class="vi"><p><span class="ipa">/b d ɡ/</span> gần như <b>mất thanh</b> ở đầu và cuối từ: bad, dog, word.</p></div>
+        <div class="en"><p><b>Phonemic</b> (broad) transcription uses <span class="ipa">/ /</span>; <b>phonetic</b> (narrow) transcription uses <span class="ipa">[ ]</span> with details.</p></div>
+        <div class="vi"><p>Phiên âm <b>âm vị</b> (rộng) dùng <span class="ipa">/ /</span>; phiên âm <b>ngữ âm</b> (hẹp) dùng <span class="ipa">[ ]</span>, ghi chi tiết.</p></div>
+      </div>
+    </div>
+
+    <!-- U4 -->
+    <div class="unit" id="u4">
+      <div class="unit-head"><span class="no">U4</span><h2>Fricatives and affricates</h2><span class="vi-t">Âm xát và âm tắc-xát</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>Fricative: air forced through a narrow passage → friction. <b>Groove</b> fricatives (sibilants) <span class="ipa">/s z ʃ ʒ/</span>; <b>slit</b> fricatives <span class="ipa">/f v θ ð/</span>.</p></div>
+        <div class="vi"><p>Âm xát: hơi đi qua khe hẹp gây tiếng xát. Xát <b>rãnh</b> (âm xuýt) <span class="ipa">/s z ʃ ʒ/</span>; xát <b>khe dẹt</b> <span class="ipa">/f v θ ð/</span>.</p></div>
+        <div class="en"><p>Fortis fricatives shorten the preceding vowel. Lenis <span class="ipa">/v ð z ʒ/</span> are devoiced initially/finally, fully voiced between vowels (television).</p></div>
+        <div class="vi"><p>Âm xát fortis rút ngắn nguyên âm trước. Lenis <span class="ipa">/v ð z ʒ/</span> mất thanh ở đầu/cuối từ, hữu thanh đầy đủ khi ở giữa (television).</p></div>
+        <div class="en"><p><b><span class="ipa">/h/</span></b>: phonetically a voiceless vowel; phonologically a consonant, only before vowels, never final. <b>Between voiced sounds it is voiced</b>: ahead, behind.</p></div>
+        <div class="vi"><p><b><span class="ipa">/h/</span></b>: về ngữ âm là nguyên âm vô thanh; về âm vị là phụ âm, chỉ đứng trước nguyên âm, không bao giờ ở cuối. <b>Giữa hai âm hữu thanh thì hữu thanh</b>: ahead, behind.</p></div>
+        <div class="en"><p>Affricate = plosive + fricative that are <b>homorganic</b> (same <b>organ / place</b> of articulation): <span class="ipa">/tʃ dʒ/</span>, post-alveolar, sibilants, often lip-rounded.</p></div>
+        <div class="vi"><p>Âm tắc-xát = âm tắc + âm xát <b>cùng cơ quan / vị trí</b> cấu âm: <span class="ipa">/tʃ dʒ/</span>, sau lợi, là âm xuýt, thường tròn môi.</p></div>
+      </div>
+    </div>
+
+    <!-- U5 -->
+    <div class="unit" id="u5">
+      <div class="unit-head"><span class="no">U5</span><h2>Nasals and other consonants</h2><span class="vi-t">Âm mũi và các phụ âm khác</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>Plosives and nasals both make a <b>complete oral closure</b> and can share places (<span class="ipa">p b m · t d n · k ɡ ŋ</span>). They differ in <b>velum position</b> (raised vs lowered) and where the air escapes (mouth vs nose).</p></div>
+        <div class="vi"><p>Âm tắc và âm mũi đều <b>đóng hoàn toàn trong miệng</b>, có thể cùng vị trí. Khác nhau ở <b>vị trí ngạc mềm</b> (nâng / hạ) và đường thoát hơi (miệng / mũi).</p></div>
+        <div class="en"><p><span class="ipa">/ŋ/</span> never occurs initially, only after short vowels. "-ng" = <span class="ipa">/ŋ/</span> at the end of a morpheme (singer) but <span class="ipa">/ŋɡ/</span> in one-morpheme words (finger) and comparatives (longer). <span class="ipa">/n/</span> → <span class="ipa">[ŋ]</span> before <span class="ipa">/k ɡ/</span>: bank.</p></div>
+        <div class="vi"><p><span class="ipa">/ŋ/</span> không đứng đầu từ, chỉ sau nguyên âm ngắn. "-ng" đọc <span class="ipa">/ŋ/</span> ở cuối hình vị (singer), đọc <span class="ipa">/ŋɡ/</span> trong từ một hình vị (finger) và so sánh hơn (longer). <span class="ipa">/n/</span> thành <span class="ipa">[ŋ]</span> trước <span class="ipa">/k ɡ/</span>.</p></div>
+        <div class="en"><p>Final nasals <b>nasalize</b> the preceding vowel: pin <span class="ipa">[pĩn]</span>. <span class="ipa">/l r m n ŋ/</span> can be <b>syllabic</b> after a consonant at the end of a syllable: bottle, cattle, threaten, final.</p></div>
+        <div class="vi"><p>Âm mũi cuối từ <b>mũi hóa</b> nguyên âm trước. <span class="ipa">/l r m n ŋ/</span> có thể <b>tự làm âm tiết</b> khi đứng cuối âm tiết sau một phụ âm: bottle, threaten, final.</p></div>
+        <div class="en"><p><span class="ipa">/r/</span>: devoiced after <span class="ipa">/p t k/</span>; RP is <b>non-rhotic</b> (r only before vowels); <b>linking r</b> (her eyes); <b>intrusive r</b> after <span class="ipa">/ə ɜː/</span> (media event). Intrusive <b>w</b> after <span class="ipa">/uː ʊ/</span> (go into), <b>j</b> after <span class="ipa">/iː ɪ/</span> (very interesting).</p></div>
+        <div class="vi"><p><span class="ipa">/r/</span>: mất thanh sau <span class="ipa">/p t k/</span>; giọng RP <b>không đọc r</b> sau nguyên âm; <b>r nối</b> (her eyes); <b>r chêm</b> sau <span class="ipa">/ə ɜː/</span>. Chêm <b>w</b> sau <span class="ipa">/uː ʊ/</span>, chêm <b>j</b> sau <span class="ipa">/iː ɪ/</span>.</p></div>
+      </div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart TD
+  L["/l/ – where is it?<br/>/l/ đứng ở đâu?"] --> A{"Before a vowel?<br/>Trước nguyên âm?"}
+  A -- "yes · có" --> CL["CLEAR l<br/>love, belong, fill in"]
+  A -- "no · không" --> B{"After a consonant, ending -le / -al / -el?<br/>Sau phụ âm, đuôi -le / -al / -el?"}
+  B -- "yes · có" --> SY["SYLLABIC l<br/>bottle, final, social"]
+  B -- "no · không" --> DK["DARK l<br/>bill, milk, feel"]
+  L --> C{"After initial /p t k/?<br/>Sau /p t k/ đầu từ?"}
+  C -- "yes · có" --> DV["DEVOICED l<br/>play, clear"]
+</pre><figcaption>Allophones of /l/ · Các biến thể của /l/</figcaption></figure>
+    </div>
+
+    <!-- U6 -->
+    <div class="unit" id="u6">
+      <div class="unit-head"><span class="no">U6</span><h2>Phonology</h2><span class="vi-t">Âm vị học</span></div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart LR
+  P["Phoneme /t/<br/>Âm vị – đổi nghĩa"] --> A1["[tʰ] aspirated<br/>top"]
+  P --> A2["[t] unaspirated<br/>stop"]
+  A1 -. "complementary distribution<br/>phân bố bổ sung" .- A2
+</pre><figcaption>One phoneme, several allophones · Một âm vị, nhiều biến thể</figcaption></figure>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>English has <b>44 phonemes</b>: 20 vowels (12 pure + 8 diphthongs) and 24 consonants.</p></div>
+        <div class="vi"><p>Tiếng Anh có <b>44 âm vị</b>: 20 nguyên âm (12 đơn + 8 đôi) và 24 phụ âm.</p></div>
+        <div class="en"><p>A <b>phoneme</b> is the smallest unit of sound that can change meaning (hot / pot). Meaningless alone; in combination it forms meaningful units. Written in <span class="ipa">/ /</span>.</p></div>
+        <div class="vi"><p><b>Âm vị</b> là đơn vị âm nhỏ nhất có thể làm đổi nghĩa (hot / pot). Đứng riêng thì vô nghĩa; kết hợp lại thì tạo đơn vị có nghĩa. Viết trong <span class="ipa">/ /</span>.</p></div>
+        <div class="en"><p>An <b>allophone</b> is a realization of the <b>same</b> phoneme in <b>different</b> positions; it does not change meaning. Allophones are in <b>complementary distribution</b>. Written in <span class="ipa">[ ]</span>.</p></div>
+        <div class="vi"><p><b>Biến thể âm vị</b> là cách phát âm của <b>cùng</b> một âm vị ở vị trí <b>khác nhau</b>; không đổi nghĩa. Các biến thể <b>phân bố bổ sung</b> (chỗ này có thì chỗ kia không). Viết trong <span class="ipa">[ ]</span>.</p></div>
+        <div class="en"><p><b>Minimal pair</b>: different meaning, only one phoneme different, same environment (pin / bin; shoe / zoo). knight / night is <b>not</b> one.</p></div>
+        <div class="vi"><p><b>Cặp tối thiểu</b>: khác nghĩa, khác đúng một âm vị, cùng môi trường. knight / night <b>không</b> phải.</p></div>
+        <div class="en"><p>The number of phonemic symbols is <b>exactly the same as</b> the number of phonemes. <b>Segmental</b> = phonemes in sequence; <b>suprasegmental</b> = stress, intonation, juncture over several segments.</p></div>
+        <div class="vi"><p>Số ký hiệu âm vị <b>bằng đúng</b> số âm vị. <b>Đoạn tính</b> = các âm vị nối tiếp; <b>siêu đoạn tính</b> = trọng âm, ngữ điệu, chỗ ngắt trải trên nhiều đoạn.</p></div>
+      </div>
+      <div class="tbl"><table><thead><tr><th>Word · Từ</th><th>Phonemes</th><th>Count · Số âm vị</th></tr></thead><tbody class="ipa">
+        <tr><td>bought</td><td>/bɔːt/</td><td>3</td></tr><tr><td>coughing</td><td>/kɒfɪŋ/</td><td>5</td></tr><tr><td>receipt</td><td>/rɪsiːt/</td><td>5</td></tr><tr><td>schoolboy</td><td>/skuːlbɔɪ/</td><td>6</td></tr></tbody></table></div>
+    </div>
+
+    <!-- U7 -->
+    <div class="unit" id="u7">
+      <div class="unit-head"><span class="no">U7</span><h2>Syllable</h2><span class="vi-t">Âm tiết</span></div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart TD
+  S["Syllable · Âm tiết"] --> O["ONSET ≤ 3<br/>pre-initial /s/ · initial · post-initial /l r w j/"]
+  S --> P["PEAK – exactly 1<br/>vowel / diphthong / syllabic C"]
+  S --> C["CODA ≤ 4<br/>pre-final /m n ŋ l s/ · final · post-final 1-2-3"]
+</pre><figcaption>Longest: CCCVCCCC · shortest: V · Dài nhất CCCVCCCC, ngắn nhất V</figcaption></figure>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>One onset consonant is always the <b>initial</b>; one coda consonant is always the <b>final</b>. There is only <b>one pre-final</b>. Post-finals are grammar endings <span class="ipa">/s z t d θ/</span>: in "sixths" the third /s/ is post-final 3.</p></div>
+        <div class="vi"><p>Onset chỉ có một phụ âm thì đó là <b>initial</b>; coda chỉ có một phụ âm thì là <b>final</b>. Chỉ có <b>một pre-final</b>. Post-final là đuôi ngữ pháp <span class="ipa">/s z t d θ/</span>: trong "sixths", /s/ thứ ba là post-final 3.</p></div>
+        <div class="en"><p><b>Strong</b> syllables are stressed, peak is any vowel except <span class="ipa">/ə/</span>. <b>Weak</b> syllables have <span class="ipa">/ə/</span>, <span class="ipa">/i/</span> (happy, react), <span class="ipa">/u/</span> (to, you) or a syllabic consonant.</p></div>
+        <div class="vi"><p>Âm tiết <b>mạnh</b> được nhấn, đỉnh là bất kỳ nguyên âm nào trừ <span class="ipa">/ə/</span>. Âm tiết <b>yếu</b> có <span class="ipa">/ə/</span>, <span class="ipa">/i/</span>, <span class="ipa">/u/</span> hoặc phụ âm tự làm âm tiết.</p></div>
+      </div>
+    </div>
+
+    <!-- U8 -->
+    <div class="unit" id="u8">
+      <div class="unit-head"><span class="no">U8</span><h2>Word stress</h2><span class="vi-t">Trọng âm từ</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>Prominence comes from <b>loudness, length, pitch and quality</b> (not "strength"). Three levels: primary, secondary, unstressed.</p></div>
+        <div class="vi"><p>Độ nổi bật do <b>độ to, độ dài, cao độ và âm sắc</b> (không phải "strength"). Ba mức: chính, phụ, không nhấn.</p></div>
+        <div class="en"><p>Placement depends on morphology (simple / complex / compound), word class, number of syllables, phonological structure.</p></div>
+        <div class="vi"><p>Vị trí trọng âm phụ thuộc cấu tạo từ (đơn / phái sinh / ghép), từ loại, số âm tiết, cấu trúc âm.</p></div>
+      </div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart TD
+  W["2-syllable word<br/>Từ 2 âm tiết"] --> Q{"Noun/adj vs verb pair?<br/>Cặp danh/tính – động từ?"}
+  Q -- "yes · có" --> NV["N, A: 1st · V: 2nd<br/>PREsent / preSENT"]
+  Q -- "no · không" --> R{"2nd syllable has long vowel,<br/>diphthong or 2+ final consonants?"}
+  R -- "yes · có" --> S2["Stress 2nd · nhấn âm 2<br/>concern, design, attract"]
+  R -- "no: short vowel, /əʊ/, 1 consonant" --> S1["Stress 1st · nhấn âm 1<br/>doctor, follow, happen"]
+</pre><figcaption>Two-syllable words · Từ hai âm tiết</figcaption></figure>
+      <div class="tbl"><table><thead><tr><th>Rule · Quy tắc</th><th>Endings · Đuôi</th><th>Examples · Ví dụ</th></tr></thead><tbody>
+        <tr><td>Final syllable stressed · nhấn âm cuối</td><td>-ade -oon -ee -ese -eer -ette -ine -esque -ain -ique</td><td>lemoNADE, balLOON, VietnaMESE, engiNEER</td></tr>
+        <tr><td>Syllable before the suffix · nhấn ngay trước đuôi</td><td>-ic -ial -ian -ion -ient -ience -iar -eous -ious -ity -aphy -ive</td><td>phoNEtic, poliTIcian, popuLArity, famiLIar, ecoNOmic</td></tr>
+        <tr><td>3+ syllables: 3rd from the end · âm thứ 3 từ cuối</td><td>—</td><td>phoTOgraphy, laBOratory</td></tr>
+        <tr><td>Prefixes don't move stress · tiền tố không đổi</td><td>un- in- dis-</td><td>COMfortable → unCOMfortable</td></tr>
+        <tr><td>Compound N+N, A+N: 1st word · từ ghép: từ đầu</td><td>—</td><td>SUITcase, a GREENhouse (special house)</td></tr>
+        <tr><td>Compound: 2nd word · từ ghép: từ sau</td><td>adj+-ed, number+N, adverbs, adv+V, names, phrasal verbs</td><td>bad-TEMpered, second-CLASS, New YORK, pick UP</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <!-- U9 -->
+    <div class="unit" id="u9">
+      <div class="unit-head"><span class="no">U9</span><h2>Sentence stress</h2><span class="vi-t">Trọng âm câu</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>Stress shifts to avoid two adjacent primary stresses: fif<b>teen</b> → fifteen <b>girls</b> ("teen" loses stress).</p></div>
+        <div class="vi"><p>Trọng âm dịch chuyển để tránh hai trọng âm chính liền nhau: fifteen girls → "teen" không còn nhấn.</p></div>
+        <div class="en"><p>Usually stressed: <b>lexical words</b> (N, V, Adj, Adv), wh-words at the start, demonstratives, possessive pronouns. Function words are unstressed unless final, negative or emphasized.</p></div>
+        <div class="vi"><p>Thường được nhấn: <b>từ nội dung</b> (danh, động, tính, trạng), từ để hỏi đầu câu, đại từ chỉ định, đại từ sở hữu. Từ chức năng không nhấn trừ khi ở cuối, phủ định, hoặc nhấn mạnh.</p></div>
+        <div class="en"><p>Only one syllable carries the primary stress: the <b>tonic syllable</b>. "What job are you doing?" → 2-3-1. "He's talking to Mary" → talking, Mary.</p></div>
+        <div class="vi"><p>Chỉ một âm tiết mang trọng âm chính: <b>âm tiết chủ âm</b>. Các từ nhấn khác giảm xuống trọng âm phụ.</p></div>
+      </div>
+    </div>
+
+    <!-- U10 -->
+    <div class="unit" id="u10">
+      <div class="unit-head"><span class="no">U10</span><h2>Weak forms</h2><span class="vi-t">Dạng yếu</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p>Function words (pronoun, preposition, conjunction, auxiliary, determiner) are normally <b>weak</b>, with <span class="ipa">/ə/</span>.</p></div>
+        <div class="vi"><p>Từ chức năng (đại từ, giới từ, liên từ, trợ động từ, hạn định từ) thường đọc <b>yếu</b>, nguyên âm thành <span class="ipa">/ə/</span>.</p></div>
+        <div class="en"><p><b>Strong</b> when: final (Who is he talking <b>to</b>?), contrasted (from him, not <b>to</b> him), coordinated (to and from), cited ("and"), negative (can't), emphasized (you <b>must</b>).</p></div>
+        <div class="vi"><p>Đọc <b>mạnh</b> khi: ở cuối câu, đối lập, giới từ phối hợp, được trích dẫn, phủ định, nhấn mạnh.</p></div>
+        <div class="en"><p><b>and</b>: <span class="ipa">/ənd/, /ən/</span>; after <span class="ipa">/t d/</span> it becomes syllabic <span class="ipa">/n̩/</span>: head and shoulders, bread and butter.</p></div>
+        <div class="vi"><p><b>and</b>: <span class="ipa">/ənd/, /ən/</span>; sau <span class="ipa">/t d/</span> thành <span class="ipa">/n̩/</span>: head and shoulders.</p></div>
+      </div>
+      <div class="tbl"><table><thead><tr><th>Word</th><th>Weak · Yếu</th><th>Strong · Mạnh</th></tr></thead><tbody>
+        <tr><td>that</td><td><span class="ipa">/ðət/</span> conjunction, relative · liên từ, đại từ quan hệ</td><td><span class="ipa">/ðæt/</span> demonstrative · chỉ định</td></tr>
+        <tr><td>some</td><td><span class="ipa">/səm/</span> plural / uncountable · số nhiều, không đếm được</td><td><span class="ipa">/sʌm/</span> singular, final · số ít, cuối câu</td></tr>
+        <tr><td>there</td><td><span class="ipa">/ðə(r)/</span> formal subject · chủ ngữ giả</td><td><span class="ipa">/ðeə(r)/</span> adverb, final · trạng từ, cuối câu</td></tr>
+        <tr><td>must</td><td><span class="ipa">/məst/</span> obligation · bắt buộc</td><td><span class="ipa">/mʌst/</span> deduction, final · suy đoán, cuối câu</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <!-- U11 -->
+    <div class="unit" id="u11">
+      <div class="unit-head"><span class="no">U11</span><h2>Aspects of connected speech</h2><span class="vi-t">Hiện tượng trong lời nói liên tục</span></div>
+      <figure class="diagram"><pre class="mermaid">
+flowchart TD
+  A["Assimilation · Đồng hóa"] --> D["By direction · Theo hướng"]
+  A --> T["By what changes · Theo cái bị đổi"]
+  D --> R["REGRESSIVE · ngược<br/>next sound changes the previous one<br/>ten pens → tem pens"]
+  D --> PR["PROGRESSIVE · xuôi<br/>previous sound changes the next one<br/>read this: ð → d"]
+  T --> M["MANNER · cách cấu âm"]
+  T --> V["VOICE · thanh<br/>have to → haf to"]
+  T --> PL["PLACE · vị trí<br/>mostly final t d n s z<br/>that boy → thap boy"]
+</pre><figcaption>Classify by direction × what changes · Phân loại theo hướng × cái bị đổi</figcaption></figure>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p><b>Assimilation</b>: a sound changes to be more like a neighbouring sound, to ease pronunciation; in rapid, casual speech; mostly consonants.</p></div>
+        <div class="vi"><p><b>Đồng hóa</b>: một âm đổi để giống âm bên cạnh, cho dễ phát âm; xảy ra khi nói nhanh, tự nhiên; chủ yếu ở phụ âm.</p></div>
+        <div class="en"><p><b>"read this"</b>: <span class="ipa">/ð/</span> becomes plosive-like after <span class="ipa">/d/</span> (progressive, manner) and <span class="ipa">/d/</span> becomes dental before it (regressive, place) → answer "A and B".</p></div>
+        <div class="vi"><p><b>"read this"</b>: <span class="ipa">/ð/</span> thành giống âm tắc sau <span class="ipa">/d/</span> (xuôi, cách cấu âm) và <span class="ipa">/d/</span> thành âm răng (ngược, vị trí) → chọn "A and B".</p></div>
+        <div class="en"><p><b>Elision</b>: a sound disappears in rapid speech: next day, mostly, camera.</p></div>
+        <div class="vi"><p><b>Lược âm</b>: một âm biến mất khi nói nhanh: next day, mostly, camera.</p></div>
+        <div class="en"><p><b>Dissimilation</b> (the opposite): two similar sounds become different: diphthong <span class="ipa">/dɪfθɒŋ/ → /dɪpθɒŋ/</span>.</p></div>
+        <div class="vi"><p><b>Dị hóa</b> (ngược đồng hóa): hai âm giống nhau trở nên khác: diphthong đọc thành <span class="ipa">/dɪpθɒŋ/</span>.</p></div>
+        <div class="en"><p><b>Linking</b>: a final consonant links to a following initial vowel (plus linking/intrusive r, w, j from U5).</p></div>
+        <div class="vi"><p><b>Nối âm</b>: phụ âm cuối nối với nguyên âm đầu từ sau (kèm r nối, r/w/j chêm ở U5).</p></div>
+      </div>
+      <p class="lead" style="margin-top:10px">Script U11 rất ngắn; ví dụ elision, voice, place ở đây là kiến thức chuẩn bổ sung, nên đối chiếu thêm hình trong slide.</p>
+    </div>
+
+    <!-- U12 -->
+    <div class="unit" id="u12">
+      <div class="unit-head"><span class="no">U12</span><h2>Intonation</h2><span class="vi-t">Ngữ điệu</span></div>
+      <div class="bi">
+        <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+        <div class="en"><p><b>Tone</b>: pitch change on a syllable or word (tone languages: Vietnamese, Chinese, Thai). <b>Intonation</b>: pitch movement over an utterance.</p></div>
+        <div class="vi"><p><b>Thanh điệu</b>: thay đổi cao độ trên một âm tiết/từ (tiếng Việt, Hoa, Thái). <b>Ngữ điệu</b>: chuyển động cao độ trên cả phát ngôn.</p></div>
+        <div class="en"><p>Three functions: <b>accentual</b> (marks the important word), <b>grammatical</b> (statement vs question, phrase boundaries), <b>attitudinal</b> (emotion).</p></div>
+        <div class="vi"><p>Ba chức năng: <b>nhấn</b> (đánh dấu từ quan trọng), <b>ngữ pháp</b> (câu kể / câu hỏi, ranh giới cụm), <b>thái độ</b> (cảm xúc).</p></div>
+        <div class="en"><p>4 pitch levels: 1 low, <b>2 normal</b>, <b>3 stressed</b>, 4 extra-high. Terminals: falling ↓, rising ↑, sustained →. Mark pitch at the start, at the tonic syllable, and at the end.</p></div>
+        <div class="vi"><p>4 mức cao độ: 1 thấp, <b>2 bình thường</b>, <b>3 âm nhấn</b>, 4 rất cao. Kết thúc: xuống ↓, lên ↑, ngang →. Ghi số ở đầu câu, ở âm tiết chủ âm và ở cuối.</p></div>
+      </div>
+      <div class="tbl"><table><thead><tr><th>Tone</th><th>English</th><th>Tiếng Việt</th><th>Example</th></tr></thead><tbody>
+        <tr><td>Fall ↘</td><td>Finality, no interest</td><td>Kết thúc, không quan tâm</td><td>Do you know John? — No↘</td></tr>
+        <tr><td>Rise ↗</td><td><b>Interest</b>, more to say, encouragement</td><td><b>Quan tâm</b>, còn nói tiếp, khích lệ</td><td>Really?↗ · Yes?↗</td></tr>
+        <tr><td>Fall-rise ⋁</td><td>Limited agreement, doubt</td><td>Đồng ý có giới hạn, nghi ngờ</td><td>It's a good school. — Yes⋁</td></tr>
+        <tr><td>Rise-fall ⋀</td><td>Strong feelings: approval, disapproval, surprise</td><td>Cảm xúc mạnh: tán thành, phản đối, ngạc nhiên</td><td>You wouldn't, would you? — No⋀</td></tr>
+        <tr><td>Level —</td><td>Routine, boring</td><td>Thủ tục, đều đều</td><td>(roll call) Yes—</td></tr>
+      </tbody></table></div>
+      <div class="tbl"><table><thead><tr><th>Contour</th><th>Used for · Dùng cho</th><th>Example</th></tr></thead><tbody class="mono">
+        <tr><td>2 3 1 ↓</td><td>Statement, command, wh-question · câu kể, mệnh lệnh, câu hỏi wh</td><td>²We drove to the ³lake¹↓</td></tr>
+        <tr><td>2 3 3 ↑</td><td>Yes/no question · câu hỏi có/không</td><td>²Are you a ³student³↑</td></tr>
+        <tr><td>2 3 2 →</td><td>More to say · chưa nói hết</td><td>²He is very ³handsome²→</td></tr>
+        <tr><td>233↑ 231↓</td><td>Choice of two · chọn một trong hai</td><td>²Do you want ³tea³↑ ²or ³coffee¹↓</td></tr>
+        <tr><td>31↓ / 23↑</td><td>Tag: sure / not sure · câu hỏi đuôi: chắc / không chắc</td><td>…³aren't you¹↓ / ²aren't you³↑</td></tr>
+        <tr><td>23↑ / 31↓</td><td>One-word question: repeat / new info · hỏi lại / hỏi thông tin mới</td><td>²Who³↑ / ³Who¹↓</td></tr>
+      </tbody></table></div>
+    </div>
+  </section>
+
+  <!-- ================= MISTAKES ================= -->
+  <section class="page" id="hay-sai">
+    <h2>Những câu dễ sai</h2>
+    <p class="lead">Rút từ các câu đã làm sai ở bài cuối học phần online. Đáp án do mình suy ra từ script vì LMS không hiện đáp án; ⚠ là câu mất phần gạch chân, cần hỏi lại giảng viên.</p>
+    <div class="tbl"><table><thead><tr><th>Question · Câu hỏi</th><th>Answer · Đáp án</th><th>Why · Vì sao</th><th>Unit</th></tr></thead><tbody>
+      <tr><td>Which is true about vowels/consonants?</td><td><b>All vowels are syllabic</b></td><td>Nguyên âm luôn tạo âm tiết</td><td>U2</td></tr>
+      <tr><td><i>diphthong</i> → <span class="ipa">/dɪpθʌŋ/</span> is…</td><td><b>dissimilation</b></td><td>/f/ đổi thành /p/ cho khác /θ/</td><td>U11</td></tr>
+      <tr><td>Final sound in <i>word</i></td><td><b>devoiced</b></td><td>/b d ɡ/ cuối từ mất thanh</td><td>U3</td></tr>
+      <tr><td>Lateral in <i>final</i></td><td><b>syllabic</b></td><td>phụ âm + -al → [l̩]</td><td>U5</td></tr>
+      <tr><td>Tone for "interested"</td><td><b>Rise</b></td><td>Rise = quan tâm</td><td>U12</td></tr>
+      <tr><td><i>and</i> in "Head and shoulders"</td><td><b class="ipa">/n̩/</b></td><td>sau /d/ → n tự làm âm tiết</td><td>U10</td></tr>
+      <tr><td>Different stress: popularity, laboratory, politician, documentary</td><td><b>laboratory</b></td><td>laBOratory (âm 2), các từ khác âm 3</td><td>U8</td></tr>
+      <tr><td>⚠ Assimilation in <i>(ten) pens</i></td><td><b>regressive, place</b></td><td>n → m trước p, nếu câu là "ten pens"</td><td>U11</td></tr>
+      <tr><td>Plosives vs nasals differ in</td><td><b>position of the velum</b></td><td>cả hai đều đóng hoàn toàn</td><td>U5</td></tr>
+      <tr><td>Homorganic = same…</td><td><b>organ of articulation</b></td><td>đúng chữ trong script</td><td>U4</td></tr>
+      <tr><td><span class="ipa">/h/</span> in <i>behind</i></td><td><b>voiced</b></td><td>/h/ giữa hai âm hữu thanh</td><td>U4</td></tr>
+      <tr><td>⚠ Underlined part in <i>lantern</i></td><td><b>not syllabic / nasalized</b></td><td>tùy phần gạch chân</td><td>U5</td></tr>
+      <tr><td>Assimilation in <i>read this</i></td><td><b>A and B</b></td><td>progressive manner + regressive place</td><td>U11</td></tr>
+    </tbody></table></div>
+    <h3>Bẫy hay gặp · Common traps</h3>
+    <div class="bi">
+      <div class="h en">English</div><div class="h vi">Tiếng Việt</div>
+      <div class="en"><p>"Strength" is <b>not</b> a stress factor: it's loudness, length, pitch, quality.</p></div>
+      <div class="vi"><p>"Strength" <b>không</b> phải yếu tố trọng âm.</p></div>
+      <div class="en"><p>The <b>tongue</b> is the most movable <b>articulator</b>, not a "point of articulation".</p></div>
+      <div class="vi"><p><b>Lưỡi</b> là <b>articulator</b> linh hoạt nhất, không phải point of articulation.</p></div>
+      <div class="en"><p>Voice is produced in the <b>larynx</b>, not the lungs.</p></div>
+      <div class="vi"><p>Âm thanh được tạo ở <b>thanh quản</b>, không phải ở phổi.</p></div>
+      <div class="en"><p>Voiceless sounds: glottis <b>wide apart</b>; <span class="ipa">/h/</span>: glottis <b>narrow</b>.</p></div>
+      <div class="vi"><p>Âm vô thanh: thanh môn <b>mở rộng</b>; <span class="ipa">/h/</span>: thanh môn <b>hẹp</b>.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Tài liệu tự tổng hợp để ôn thi, dựa trên bài giảng môn Ngữ âm – Âm vị học. Không thay thế slide và script chính thức.</div></footer>
+
+<script>
+(function(){
+  var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  // theme
+  var root=document.documentElement, saved=store.get('naavh-theme');
+  if(saved) root.setAttribute('data-theme',saved);
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark'; root.setAttribute('data-theme',next); store.set('naavh-theme',next); location.reload();
+  });
+  // tabs
+  var tabs=['roadmap','kien-thuc','hay-sai'];
+  function show(){
+    var h=location.hash.slice(1), tab=tabs.indexOf(h)>=0?h:null;
+    if(!tab){var el=h&&document.getElementById(h); var sec=el&&el.closest('section.page'); tab=sec?sec.id:'roadmap';}
+    document.querySelectorAll('section.page').forEach(function(s){s.classList.toggle('active',s.id===tab)});
+    document.querySelectorAll('nav.tabs a').forEach(function(a){if(a.dataset.tab===tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    if(window.__renderMermaid) window.__renderMermaid();
+    if(tabs.indexOf(h)>=0) window.scrollTo(0,0);
+  }
+  addEventListener('hashchange',show); show();
+  // countdown + today
+  var now=new Date(), exam=new Date(2026,10,9);
+  var t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var left=Math.round((exam-t0)/864e5);
+  document.getElementById('daysLeft').textContent=left>0?left:(left===0?'0 – hôm nay!':'—');
+  var iso=t0.getFullYear()+'-'+String(t0.getMonth()+1).padStart(2,'0')+'-'+String(t0.getDate()).padStart(2,'0');
+  document.querySelectorAll('.day[data-date="'+iso+'"]').forEach(function(d){d.classList.add('today')});
+  // checklist
+  var boxes=document.querySelectorAll('input[type=checkbox][data-k]');
+  function prog(){var n=0;boxes.forEach(function(b){if(b.checked)n++});document.getElementById('bar').style.width=(n/boxes.length*100)+'%';document.getElementById('progText').textContent='Đã xong '+n+'/'+boxes.length+' việc';}
+  boxes.forEach(function(b){b.checked=store.get('naavh-'+b.dataset.k)==='1';b.addEventListener('change',function(){store.set('naavh-'+b.dataset.k,b.checked?'1':'0');prog()})});
+  prog();
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.esm.min.mjs';
+const r=document.documentElement.getAttribute('data-theme');
+const dark=r==='dark'||(!r&&matchMedia('(prefers-color-scheme: dark)').matches);
+mermaid.initialize({startOnLoad:false,theme:dark?'dark':'neutral',fontFamily:'"Be Vietnam Pro","Noto Sans",sans-serif',flowchart:{htmlLabels:true}});
+window.__renderMermaid=()=>mermaid.run({nodes:[...document.querySelectorAll('section.page.active pre.mermaid:not([data-processed])')]});
+window.__renderMermaid();
+</script>
+</body>
+</html>
